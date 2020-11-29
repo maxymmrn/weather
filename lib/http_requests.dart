@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart';
+import 'package:weather/model/day_weather.dart';
 import 'model/city.dart';
 import 'model/forecast.dart';
 
@@ -43,8 +44,17 @@ Future<Forecast> getForecast(City city) async {
 
     return Forecast(
         city: city,
-        today: timeSeries[0]['data']['instant']['details']['air_temperature'],
-        tomorrow: timeSeries[24]['data']['instant']['details']['air_temperature'],
-        twoDays: timeSeries[48]['data']['instant']['details']['air_temperature']
+        today: DayWeather(
+          temperature: timeSeries[0]['data']['instant']['details']['air_temperature'],
+          windSpeed: timeSeries[0]['data']['instant']['details']['wind_speed'],
+        ),
+        tomorrow: DayWeather(
+          temperature: timeSeries[24]['data']['instant']['details']['air_temperature'],
+          windSpeed: timeSeries[24]['data']['instant']['details']['wind_speed'],
+        ),
+        inTwoDays: DayWeather(
+          temperature: timeSeries[48]['data']['instant']['details']['air_temperature'],
+          windSpeed: timeSeries[48]['data']['instant']['details']['wind_speed'],
+        ),
     );
   }

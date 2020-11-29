@@ -1,10 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:weather/model/forecast.dart';
 
-import 'htpp_requests.dart';
-import 'model/city.dart';
+import '../http_requests.dart';
+import '../model/city.dart';
 
 class CitySearchDelegate extends SearchDelegate<City> {
 
@@ -44,7 +41,13 @@ class CitySearchDelegate extends SearchDelegate<City> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text('===Your Word Choice==='),
+            Text(
+              'Tap to confirm',
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold
+              ),
+            ),
             GestureDetector(
               onTap: () {
                 this.close(context, _city);
