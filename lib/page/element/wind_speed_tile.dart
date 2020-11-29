@@ -11,9 +11,9 @@ class WindSpeedTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: FaIcon(FontAwesomeIcons.thermometerHalf),
+      leading: FaIcon(FontAwesomeIcons.wind),
       title: Text("Wind Speed"),
-      trailing: Text(day != null ? "${day.windSpeed}" : "Loading"),
+      trailing: Text(day != null ? "${day.windSpeed} m/s" : "Loading"),
     );
   }
 
